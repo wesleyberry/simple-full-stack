@@ -2,14 +2,21 @@ let button = document.getElementById("submit");
 
 button.onclick = async function(e) {
     e.preventDefault();
-    const settings = {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json',
-        }
+    const body = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value,
     };
+    
+    const otherPram = {
+        headers: {
+            "Content-type": "application/json"
+        },
+        body,
+        method: "POST"
+    }
 
-    const fetchResponse = await fetch('/api/users', settings);
-    console.log(fetchResponse);
+    fetch('/api/users', otherPram)
+        .then(data => data.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 }
