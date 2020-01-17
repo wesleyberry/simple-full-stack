@@ -25,8 +25,10 @@ function getUsers() {
     fetch('api/users')
         .then(response => response.json())
         .then(data => {
-            let h1 = document.createElement(<h1></h1>);
-            document.querySelector('body').append(h1);
+            let h1 = document.createElement("h1");
+            let h1_text = document.createTextNode(`${data.name} the ${data.profession}`);
+            h1.appendChild(h1_text);
+            document.body.appendChild(h1);
         })
         .catch(err => console.log(err));
 }
