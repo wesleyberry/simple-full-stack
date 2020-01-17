@@ -20,3 +20,15 @@ button.onclick = async function(e) {
         .then(res => console.log(res))
         .catch(err => console.log(err));
 }
+
+function getUsers() {
+    fetch('api/users')
+        .then(response => response.json())
+        .then(data => {
+            let body = document.querySelector('body');
+            body.append(`${data.name} the ${data.profession}`);
+        })
+        .catch(err => console.log(err));
+}
+
+getUsers();

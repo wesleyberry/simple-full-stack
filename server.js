@@ -4,7 +4,7 @@ const PORT = 3000;
 const path = require('path');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static('/'));
+app.use(express.static('public'))
 
 
 app.get("/", function(req, res) {
@@ -12,8 +12,10 @@ app.get("/", function(req, res) {
 });
 
 app.post('/api/users', (req, res) => {
-    console.log(req.body.username);
-    console.log(req.body.password);
+    console.log(req);
+    // console.log(req.body.password);
 });
+
+app.get('/api/users', (req, res) => res.json({name: 'Bob', profession: 'Builder'}));
 
 app.listen(PORT, () => console.log(`Running on PORT ${PORT}`));
