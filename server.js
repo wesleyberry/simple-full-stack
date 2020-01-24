@@ -12,8 +12,8 @@ app.get("/", function(req, res) {
 });
 
 app.post('/api/users', (req, res) => {
-    console.log(req);
-    // console.log(req.body.password);
+    console.log(req.body.body.username);
+    console.log(req.body.body.password);
 });
 
 app.get('/api/users', (req, res) => res.json({name: 'Bob', profession: 'Builder'}));

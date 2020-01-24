@@ -8,14 +8,14 @@ button.onclick = async function(e) {
     };
     
     const otherPram = {
+        method: "POST",
         headers: {
             "Content-type": "application/json"
         },
         body,
-        method: "POST"
     }
 
-    fetch('/api/users', otherPram)
+    axios.post('/api/users', otherPram)
         .then(data => data.json())
         .then(res => console.log(res))
         .catch(err => console.log(err));
